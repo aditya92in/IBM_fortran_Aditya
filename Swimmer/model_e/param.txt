@@ -1,0 +1,13 @@
+      integer imax,jmax,i,j
+      integer i1  ,j1  
+      parameter ( imax = 400)  !x     stromingsrichting  225  120 64 360
+      parameter ( jmax = 400)  !y  120                         60 32 120
+
+      parameter ( i1 =imax+1)
+      parameter ( j1 =jmax+1)
+c
+      integer    ih,  jh
+      parameter (ih=3,jh=3)
+
+
+

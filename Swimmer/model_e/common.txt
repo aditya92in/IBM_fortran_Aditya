@@ -1,0 +1,85 @@
+      realUold(1-ih:imax+ih,1-jh:jmax+jh)
+      realVold(1-ih:imax+ih,1-jh:jmax+jh)
+      common /old/Uold,Vold
+      save   /old/
+
+      realUnew(1-ih:imax+ih,1-jh:jmax+jh)
+      realVnew(1-ih:imax+ih,1-jh:jmax+jh)
+      common /new/Unew,Vnew
+      save   /new/
+
+      realdUdt(1-ih:imax+ih,1-jh:jmax+jh)
+      realdVdt(1-ih:imax+ih,1-jh:jmax+jh)
+      common /deriv/dUdt,dVdt
+      save   /deriv/
+
+      realCold(1-ih:imax+ih,1-jh:jmax+jh)
+      realCnew(1-ih:imax+ih,1-jh:jmax+jh)
+      realdCdt(1-ih:imax+ih,1-jh:jmax+jh)
+      common /scal/Cold,Cnew,dCdt
+      save   /scal/
+
+c     real  p(imax,jmax,kmax)
+      real  p(1-ih:imax+ih,1-jh:jmax+jh)
+      real  pold(1-ih:imax+ih,1-jh:jmax+jh)
+      common /pressure/p,pold
+      save   /pressure/
+c
+
+      real dxi(1-ih:imax+ih), dyi (1-jh:jmax+jh)
+      realRei,dt,Ufree,cs,time
+      real dxhi(1-ih:imax+ih),dyhi(1-jh:jmax+jh)
+      real dx  (1-ih:imax+ih),dy  (1-jh:jmax+jh)
+      real dxh (1-ih:imax+ih),dyh (1-jh:jmax+jh)
+c
+      real Rp(1-jh:jmax+jh), Rv(1-jh:jmax+jh),  Rpi(1-jh:jmax+jh), Rvi(1-jh:jmax+jh)
+cVERS
+      real dxi4W (1-ih:imax+ih),dyi4S (1-jh:jmax+jh)
+      real dxi4E (1-ih:imax+ih),dyi4N (1-jh:jmax+jh)
+      real dxhi4W(1-ih:imax+ih),dyhi4S(1-jh:jmax+jh)
+      real dxhi4E(1-ih:imax+ih),dyhi4N(1-jh:jmax+jh)
+      real dx4W  (1-ih:imax+ih),dy4S  (1-jh:jmax+jh)
+      real dx4E  (1-ih:imax+ih),dy4N  (1-jh:jmax+jh)
+      real dxh4W (1-ih:imax+ih),dyh4S (1-jh:jmax+jh)
+      real dxh4E (1-ih:imax+ih),dyh4N (1-jh:jmax+jh)
+c
+      real xp    (1-ih:imax+ih)
+      real yp    (1-jh:jmax+jh)
+      real xh    (1-ih:imax+ih)
+      real yh    (1-jh:jmax+jh)
+      real ordarx(1-ih:imax+ih)
+      real ordary(1-jh:jmax+jh)
+      real ordaru(1-ih:imax+ih,1-jh:jmax+jh)
+      real ordarv(1-ih:imax+ih,1-jh:jmax+jh)
+      common /parm/dxi,dyi,Rei,dt,time,Ufree,cs,
+     &       dxhi, dyhi, 
+     &       dx  , dy  , 
+     &       dxh , dyh , 
+     &       xp  , yp  , 
+     &       xh  , yh  , 
+     &       Rp, Rv, Rpi, Rvi,
+c    & dx4,   dy4,   
+c    & dxi4,  dyi4,  
+c    & dxh4,  dyh4,  
+c    & dxhi4, dyhi4, 
+     & dxi4W ,dyi4S ,
+     & dxi4E ,dyi4N ,
+     & dxhi4W,dyhi4S,
+     & dxhi4E,dyhi4N,
+     & dx4W  ,dy4S  ,
+     & dx4E  ,dy4N  ,
+     & dxh4W ,dyh4S ,
+     & dxh4E ,dyh4N ,
+     & ordarx, ordary, 
+     & ordaru, ordarv 
+      save   /parm/
+      integer istep, nstep, istart
+      common /parmi/ istep, nstep, istart
+      save   /parmi/
+   
+      real   visc(1-ih:imax+ih,1-jh:jmax+jh)
+      common /viscosity/visc
+      save   /viscosity/
+
+
+
